@@ -23,10 +23,12 @@ const port = args.port || process.env.PORT || 3000;
 // If there is an error, put it on the console error, return, and exit with error code 1. 
 // Do not be nice about exiting.
 
-fs.readFile('./www/index.html', (err) => {
-    if (err) throw err;
+fs.readFile('./www/index.html', "utf8", (err, data) => {
+    if (err) {
+    console.error(err)
     return;
-    exit(1);
+    process.exit(1);
+    }
 })
 
 // Define a const `server` as an arrow function using http.createServer. 
